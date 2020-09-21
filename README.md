@@ -1,3 +1,8 @@
+Preparation
+
+1) Install npm, yarn
+2) npm install, yarn install
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
