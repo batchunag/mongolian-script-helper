@@ -15,7 +15,7 @@ export class Autocomplete extends Component {
   onChange = (e) => {
     console.log('onChanges');
 
-    const { words_w, words_l } = this.props;
+    const { words_w, words_l, words_c } = this.props;
     const userInput = e.currentTarget.value;
 
     // const filteredOptions = options.filter(
@@ -28,7 +28,7 @@ export class Autocomplete extends Component {
     // });
     for (let i=0; i<words_l.length; i++) {
         if (words_l[i].indexOf(userInput) > -1) {
-            filteredOptions.push(words_w[i]);
+            filteredOptions.push(words_w[i] + '(' + words_c[i] + ')');
         }
     }
     console.log(words_w);
