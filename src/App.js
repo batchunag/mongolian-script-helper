@@ -2,11 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Autocomplete from "./Autocomplete";
-
-var words_w = ["ᠠᠪᠤ", "ᠠᠭᠠᠭ", "ᠠᠭᠠᠭᠢᠮ᠎ᠠ"];
-var words_l = ["abu", "agag", "agagim"];
-var words_c = ["aав", "ааг", "аагим"];
-
+import mongolian_dict from "./dict_files/mongolian_dict.json";
 
 /**
  * Resources
@@ -20,6 +16,19 @@ function handleChange(e) {
   console.log(e.target.value);
 }
 function App() {
+  var words_w = [];// = ["ᠠᠪᠤ", "ᠠᠭᠠᠭ", "ᠠᠭᠠᠭᠢᠮ᠎ᠠ"];
+  var words_l = [];// = ["abu", "agag", "agagim"];
+  var words_c = [];// = ["aав", "ааг", "аагим"];
+
+  var cyrillic_keys = new Set();
+  mongolian_dict.Dict.map((word) => {
+    if (word.Cyrillic && word.Written && !cyrillic_keys.has(word.Cyrillic)) { 
+      words_c.push(word.Cyrillic);
+      words_w.push(word.Written);
+      cyrillic_keys.add(word.Cyrillic);
+    }
+  });
+
   return (
     <div className="App">
       <header className="App-header">
@@ -29,18 +38,9 @@ function App() {
         words_l={words_l}
         words_c={words_c}
       />
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Кириллээр бичвэл монгол бичгийн үгнүүд гарч ирэх болно.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );

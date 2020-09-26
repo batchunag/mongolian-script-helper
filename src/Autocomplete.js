@@ -26,12 +26,14 @@ export class Autocomplete extends Component {
     // words_l.forEach(element => {
         
     // });
-    for (let i=0; i<words_l.length; i++) {
-        if (words_l[i].indexOf(userInput) > -1) {
+    for (let i=0; i<words_c.length; i++) {
+        if (words_c[i].indexOf(userInput) == 0) {
             filteredOptions.push(words_w[i] + '(' + words_c[i] + ')');
         }
     }
-    console.log(words_w);
+    filteredOptions.sort();
+    filteredOptions = filteredOptions.slice(0,5);
+    // console.log(words_w);
 
     this.setState({
       activeOption: 0,
