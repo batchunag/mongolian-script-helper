@@ -1,11 +1,14 @@
+#!/usr/bin/env python
+# coding=utf-8
+
 # CSV to JSON converter
 import csv
 import json
 import re
 
 # Input & output file names
-input_csv_fname = "toli.query.mn_20150426132043 2.csv"
-output_json_fname = "mongolian_dict.json"
+input_csv_fname = "../src/dict_files/toli.query.mn_20150426132043.csv"
+output_json_fname = "../src/dict_files/mongolian_dict.json"
 
 # HTML tag remover function
 tag_remover = re.compile(r'<[^>]+>')
@@ -29,8 +32,22 @@ for line in line_list_raw:
     line_list_clean.append(split_line)
 line_list_raw = []
 
+alphabet_cyr = ["а", "б", "в", "г", "д", "е", "ё", "ж", "з", "и", "й", "к", "л", "м", "н", "о", "ө", "п", "р", "с", "т", "у", "ү", "ф", "х", "ц", "ч", "ш", "щ", "ъ", "ь", "ы", "э", "ю", "я"];
+alphabet_lat = ["a", "b", "v", "g", "d", "ye", "yo", "j", "z", "i", "i", "k", "l", "m", "n", "o", "u", "p", "r", "s", "t", "u", "u", "f", "h", "ts", "ch", "sh", "", "", "i", "ii", "e", "yu", "ya"];
+lat2cyr = {}
+cyr2lat = {}
+
+for i in range(35):
+    lat2cyr[alphabet_lat[i]] = alphabet_cyr[i]
+    cyr2lat[alphabet_cyr[i]] = alphabet_lat[i]
+
+def convert2lat(word):
+    return "".join([cyr2lat[c] if (c in cyr2lat) else "" for c in word])
+def convert2cyr(word):
+    return "".join([lat2cyr[c] if (c in lat2cyr) else "" for c in word])
+
 # ... create Python dictionary containing the data and then convert that to JSON
-mongolian_dict = {'Dict' : []}
+mongolian_dict = {'dict' : []}
 for sline in line_list_clean:
     item = {}
     tmp = sline[0].split(' ')
@@ -38,15 +55,16 @@ for sline in line_list_clean:
         tmp = tmp[0] + " (" + tmp[1] + ")" 
     else:
         tmp = tmp[0]
-    item['Cyrillic'] = tmp
-    item['Description'] = sline[1]
+    item['cyrillic'] = tmp
+    item['latin_direct'] = convert2lat(tmp)
+    item['description'] = sline[1]
     tmp = sline[2].split('\t')
-    item['Written'] = tmp[0]
+    item['written'] = tmp[0]
     if len(tmp)>1:
-        item['Phonetic transcription'] = tmp[1]
+        item['phonetic transcription'] = tmp[1]
     else:
-        item['Phonetic transcription'] = ''
-    mongolian_dict['Dict'].append(item)
+        item['phonetic transcription'] = ''
+    mongolian_dict['dict'].append(item)
 
 with open(output_json_fname, 'w', encoding='utf-8') as file:
     json.dump(mongolian_dict, file, ensure_ascii=False, indent=4)

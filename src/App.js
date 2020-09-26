@@ -21,11 +21,12 @@ function App() {
   var words_c = [];// = ["aав", "ааг", "аагим"];
 
   var cyrillic_keys = new Set();
-  mongolian_dict.Dict.map((word) => {
-    if (word.Cyrillic && word.Written && !cyrillic_keys.has(word.Cyrillic)) { 
-      words_c.push(word.Cyrillic);
-      words_w.push(word.Written);
-      cyrillic_keys.add(word.Cyrillic);
+  mongolian_dict.dict.map((word) => {
+    if (word.cyrillic && word.written && word.latin_direct && !cyrillic_keys.has(word.cyrillic)) { 
+      words_c.push(word.cyrillic);
+      words_w.push(word.written);
+      words_l.push(word.latin_direct);
+      cyrillic_keys.add(word.cyrillic);
     }
   });
 
@@ -37,11 +38,25 @@ function App() {
         words_w={words_w}
         words_l={words_l}
         words_c={words_c}
-      />
-        <p>
-          Кириллээр бичвэл монгол бичгийн үгнүүд гарч ирэх болно.
+        />
+         <p>
+          Кирилл эсвэл латинаар бичвэл монгол бичгийн үгнүүд гарч ирэх болно.
         </p>
       </header>
+      <body>
+        <a href="https://www.mongolbichig.info/%D0%BC%D0%BE%D0%BD%D0%B3%D0%BE%D0%BB">Бусад монгол бичгийн материал, хэрэгслүүд.</a>
+        <footer>
+          <p>
+            Developed by Ants Community.<br/>
+            <a href="https://github.com/batchunag/mongolian-script-helper">
+               Check out the source code and contribute to this Chrome Extension.
+            </a>
+          </p>
+          <p>
+            Толь бичгийн үгсийг toli.query.mn сангаас авсан болно.
+          </p>
+        </footer>
+        </body>
     </div>
   );
 }
