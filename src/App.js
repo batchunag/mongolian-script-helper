@@ -8,6 +8,14 @@ var words_l = ["abu", "agag", "agagim"];
 var words_c = ["aав", "ааг", "аагим"];
 
 
+/**
+ * Resources
+ * https://developer.chrome.com/extensions/overview
+ * https://www.digitalocean.com/community/tutorials/react-react-autocomplete
+ * https://github.com/moroshko/react-autosuggest#installation
+ * 
+ */
+
 function handleChange(e) {
   console.log(e.target.value);
 }
@@ -19,15 +27,7 @@ function App() {
         <Autocomplete
         words_w={words_w}
         words_l={words_l}
-        // options={[
-        //   "Papaya",
-        //   "Persimmon",
-        //   "Paw Paw",
-        //   "Prickly Pear",
-        //   "Peach",
-        //   "Pomegranate",
-        //   "Pineapple"
-        // ]}
+        words_c={words_c}
       />
         <img src={logo} className="App-logo" alt="logo" />
         <p>

@@ -1,15 +1,26 @@
-Preparation
+Энэ chrome extension нь танд монгол бичгээрээ бичихэд туслах болно.
+Та монгол бичгээр яаж бичихээ мэдэхгүй байгаа үгээ кириллээр оруулбал монгол бичгийн хувилбарыг харуулах юм.
+
+![Зураг](/public/screenshot.png)
+
+Хөгжүүлэлтийн бэлтгэл
 
 1) Install npm, yarn
 2) npm install, yarn install
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+## Chrome extension local орчинд ашиглаж үзэх заавар
+- `npm run build` ажиллуулна. build гэсэн фолдер үүсэх болно.
+- browser дээрээс `chrome://extensions` гэсэн хаяг оруулна.
+- Developer mode гэдгийг идэвхижүүлнэ.
+- Load unpacked гэж сонгоод эхний алхамд үүсгэсэн build фолдероо зааж extension.оо оруулна.
+- Chrome .ийн extension.д нэмэгдсэн байх болно. Харагдахгүй бол бүх extension.оо харах товчийг дараад үзээрэй.
 
-### `yarn start`
+## React апп.аа localhost дээр ажиллуулах
+
+`yarn start`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
