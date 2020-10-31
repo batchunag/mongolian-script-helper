@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 export class Autocomplete extends Component {
-  static propTypes = {
-    options: PropTypes.instanceOf(Array).isRequired
-  };
   state = {
     activeOption: 0,
     filteredOptions: [],
@@ -27,7 +23,6 @@ export class Autocomplete extends Component {
         
     // });
     if ((/[a-zA-Z]/).test(userInput.toLowerCase().charAt(0))) {
-      console.log("Yes");
       for (let i=0; i<words_l.length; i++) {
         if (words_l[i].indexOf(userInput.toLowerCase()) === 0) {
             filteredOptions.push(words_w[i] + '(' + words_c[i] + ')');
@@ -51,6 +46,14 @@ export class Autocomplete extends Component {
       userInput: e.currentTarget.value
     });
   };
+
+  // copyToClipboard = () => {
+  //   var input = document.getElementById('search-input');
+  //   input.select();
+  //   input.setSelectionRange(0, 99999);
+  //   document.execCommand("copy");
+  // };
+
 
   onClick = (e) => {
     this.setState({
@@ -123,6 +126,7 @@ export class Autocomplete extends Component {
           <input
             type="text"
             className="search-box"
+            id="search-input"
             onChange={onChange}
             onKeyDown={onKeyDown}
             value={userInput}
