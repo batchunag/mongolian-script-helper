@@ -94,3 +94,44 @@ ul.options li.option-active {
 .no-options {
   color: white;
 }
+
+.caseTable {
+  max-height: 55px;
+  max-width: 200px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  z-index: 2;
+  right: 0;
+  top: 0;
+  position: absolute;
+}
+
+.caseTable > table {
+  background-color: orange;
+  color: black;
+}
+
+.caseTable > table, td, th {
+    border: 2px solid black;
+}
+
+.caseTable:hover {
+  position: relative;
+  max-height: 200px;
+  max-width: 100%;
+  overflow: scroll;
+  transition: all .2s ease;
+  z-index: 2;
+  right: 0;
+  top: 0;
+  position: absolute;
+  font-size: 10px;
+}
+
+.caseTable + .tooltip {
+  display: none;
+}
+
+.caseTable:hover + .tooltip {
+  display: block;
+}
