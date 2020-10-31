@@ -9,8 +9,8 @@ Chrome extension болон react апп-г цааш нь сайжруулах, 
 
 Хөгжүүлэлтийн бэлтгэл
 
-1) Install npm, yarn
-2) npm install, yarn install
+1) Install **npm, yarn**
+2) `npm install` & `yarn install`
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -18,13 +18,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Chrome extension local орчинд ашиглаж үзэх заавар
 - `npm run build` ажиллуулна. build гэсэн фолдер үүсэх болно.
 - browser дээрээс `chrome://extensions` гэсэн хаяг оруулна.
-- Developer mode гэдгийг идэвхижүүлнэ.
-- Load unpacked гэж сонгоод эхний алхамд үүсгэсэн build фолдероо зааж extension.оо оруулна.
-- Chrome .ийн extension.д нэмэгдсэн байх болно. Харагдахгүй бол бүх extension.оо харах товчийг дараад үзээрэй.
+- **Developer mode** гэдгийг идэвхижүүлнэ.
+- **Load unpacked** гэж сонгоод эхний алхамд үүсгэсэн **build** фолдероо зааж **extension** -оо оруулна.
+- **Chrome** -ийн **extension** -нд нэмэгдсэн байх болно. Харагдахгүй бол бүх **extension** -оо харах товчийг дараад үзээрэй.
 
 ## React апп.аа localhost дээр ажиллуулах
 
-`yarn start`
+```sh
+yarn start
+```
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
