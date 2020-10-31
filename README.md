@@ -1,5 +1,21 @@
+# mongolian-script-helper
+
 Энэ chrome extension нь танд монгол бичгээрээ бичихэд туслах болно.
 Та монгол бичгээр яаж бичихээ мэдэхгүй байгаа үгээ кирилл, эсвэл латинаар оруулбал монгол бичгийн хувилбарыг харуулах юм.
+
+- [mongolian-script-helper](#mongolian-script-helper)
+  - [Chrome extension local орчинд ашиглаж үзэх заавар](#chrome-extension-local-орчинд-ашиглаж-үзэх-заавар)
+  - [React апп.аа localhost дээр ажиллуулах](#react-аппаа-localhost-дээр-ажиллуулах)
+    - [`yarn test`](#yarn-test)
+    - [`yarn build`](#yarn-build)
+    - [`yarn eject`](#yarn-eject)
+  - [Learn More](#learn-more)
+    - [Code Splitting](#code-splitting)
+    - [Analyzing the Bundle Size](#analyzing-the-bundle-size)
+    - [Making a Progressive Web App](#making-a-progressive-web-app)
+    - [Advanced Configuration](#advanced-configuration)
+    - [Deployment](#deployment)
+    - [`yarn build` fails to minify](#yarn-build-fails-to-minify)
 
 ![Зураг](/public/screenshot.png)
 
