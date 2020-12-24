@@ -3,12 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.9.0",
+    "@material-ui/core": "^4.11.2",
+    "@svgr/webpack": "^4.3.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "babel-eslint": "^10.1.0",
+    "core-js": "^3.8.1",
+    "immer": "^1.10.0",
+    "jest-matcher-utils": "^26.6.2",
+    "json-parse-better-errors": "^1.0.2",
+    "mini-css-extract-plugin": "^0.9.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
+    "react-error-overlay": "^6.0.8",
+    "react-scripts": "3.4.3",
+    "written-mongol-keyboard": "^1.1.9"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -30,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.2.0"
   }
 }

@@ -3,7 +3,9 @@
 Энэ chrome extension нь танд монгол бичгээрээ бичихэд туслах болно.
 Та монгол бичгээр яаж бичихээ мэдэхгүй байгаа үгээ кирилл, эсвэл латинаар оруулбал монгол бичгийн хувилбарыг харуулах юм.
 
+
 - [mongolian-script-helper](#mongolian-script-helper)
+- [Хувилбар 2.0](#хувилбар-20)
   - [Chrome extension local орчинд ашиглаж үзэх заавар](#chrome-extension-local-орчинд-ашиглаж-үзэх-заавар)
   - [React апп.аа localhost дээр ажиллуулах](#react-аппаа-localhost-дээр-ажиллуулах)
     - [`yarn test`](#yarn-test)
@@ -19,6 +21,11 @@
 
 ![Зураг](/public/screenshot.png)
 
+# Хувилбар 2.0
+Extension-ээс гадна шууд вэб хуудсан дээрээсээ хадмал бичгээрээ бичих боломжтой боллоо.
+
+![Зураг](/public/хадмал.png)
+
 Толь бичгийн үгс, тайлбарыг [toli.query.mn](https://toli.query.mn/) сайтаас авсан болно.
 
 Chrome extension болон react апп-г цааш нь сайжруулах, ашиглах нөхцөл нь <a href="LICENSE">GNU GPL v3</a> болно. Товч нь та өөрийн хувилбараа нээлттэй байлгах нөхцөлтэйгээр ашиглах бүрэн боломжтой.
@@ -33,7 +40,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Chrome extension local орчинд ашиглаж үзэх заавар
 - `npm run build` ажиллуулна. build гэсэн фолдер үүсэх болно.
-- browser дээрээс `chrome://extensions` гэсэн хаяг оруулна.
+- `npx webpack --config webpack.config.js` коммандыг ажиллуулж хөрвүүлэгдсэн content.js файлыг build.рүү хуулна.
+- browser дээрээс [chrome://extensions](chrome://extensions) гэсэн хаяг оруулна.
 - **Developer mode** гэдгийг идэвхижүүлнэ.
 - **Load unpacked** гэж сонгоод эхний алхамд үүсгэсэн **build** фолдероо зааж **extension** -оо оруулна.
 - **Chrome** -ийн **extension** -нд нэмэгдсэн байх болно. Харагдахгүй бол бүх **extension** -оо харах товчийг дараад үзээрэй.

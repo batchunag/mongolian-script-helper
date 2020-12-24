@@ -1,8 +1,14 @@
-import React from 'react';
+/*global chrome*/
+import React, { useState } from 'react';
 import './App.css';
 import Autocomplete from "./Autocomplete";
 import GrammarCases from "./GrammarCases";
 import mongolian_dict from "./dict_files/mongolian_dict.json";
+import Switch from '@material-ui/core/Switch';
+
+import TraditionalKeyboard from 'written-mongol-keyboard';
+const keyboard = new TraditionalKeyboard();
+keyboard.switch = false;
 
 /**
  * Resources
@@ -12,7 +18,10 @@ import mongolian_dict from "./dict_files/mongolian_dict.json";
  * 
  */
 
+
 function App() {
+  const [checked, setChecked] = useState(false);
+
   var words_w = [];// = ["ᠠᠪᠤ", "ᠠᠭᠠᠭ", "ᠠᠭᠠᠭᠢᠮ᠎ᠠ"];
   var words_l = [];// = ["abu", "agag", "agagim"];
   var words_c = [];// = ["aав", "ааг", "аагим"];
@@ -26,6 +35,41 @@ function App() {
       cyrillic_keys.add(word.cyrillic);
     }
   });
+
+  const updateIfNecessary = (isOn) => {
+    //Send message to content
+    chrome.storage.sync.set({toggle : isOn});
+    if (checked !== isOn) {
+      setChecked(isOn);
+    }
+
+    if (keyboard.switch !== isOn) {
+      keyboard.switch = isOn;
+    }
+  }
+
+  keyboard.onSwitch((isOn) => {
+    updateIfNecessary(isOn);
+  });
+  
+  chrome.storage.onChanged.addListener(
+    (changes) =>  {
+        if (changes['toggle']) {
+          //Switched in content
+            const newValue = changes['toggle'].newValue;
+            if (newValue !== checked) {
+              updateIfNecessary(newValue);
+            }
+        }
+    }
+  );
+
+  const toggle = (e) => { 
+    setChecked(e.target.checked);
+    updateIfNecessary(e.target.checked);
+  }
+
+  
 
   return (
     <div className="App">
@@ -42,7 +86,16 @@ function App() {
         </p>
       </header>
       <div>
-        <a href="https://www.mongolbichig.info/%D0%BC%D0%BE%D0%BD%D0%B3%D0%BE%D0%BB">Бусад монгол бичгийн материал, хэрэгслүүд.</a>
+        <p>
+          <Switch checked={checked} inputProps={{ 'aria-label': 'Switch' }} onChange={toggle} />
+          Монгол бичгийн туслахыг идэвхижүүлэх.
+          <br/>
+          Ингэснээр та дурын input талбарт гараасаа шууд хадмал бичгээр бичих боломжтой. Мөн Ctrl+M товчоор идэвхижүүлж/идэвхигүй болгож болно.
+        </p>
+
+        <a href="https://www.mongolbichig.info/%D0%BC%D0%BE%D0%BD%D0%B3%D0%BE%D0%BB"> 
+        Бусад монгол бичгийн материал, хэрэгслүүд.
+        </a>
         <footer>
           <p>
             Developed by Ants Community.<br/>
